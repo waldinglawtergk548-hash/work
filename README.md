@@ -27,7 +27,7 @@ $bfPython = 'D:\anaconda\envs\vjepa2-312\python.exe'
   --output '.\B_predictions.csv'
 ```
 
-推理默认读取 GB18030，UTF-8 输入可加 `--encoding utf-8-sig`。使用 `A_final.pt` 可运行 A 版。预测列为 `row_id,pred_label,p0,p1,p2`，行号从 1 起。权重文件内含 scaler 均值与尺度、24 列清单、分组、类别顺序及训练配置。
+推理默认读取 GB18030，UTF-8 输入可加 `--encoding utf-8-sig`。`predict.py` 根据权重文件自动识别 A、B、C 版本。C 版可传入 `--checkpoint '.\results_c\C_final.pt'` 或其他已保存的 C 版权重。预测列为 `row_id,pred_label,p0,p1,p2`，行号从 1 起。权重文件内含 scaler 均值与尺度、24 列清单、分组、类别顺序及训练配置。
 
 ## 结果目录
 

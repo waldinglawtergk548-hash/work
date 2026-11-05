@@ -138,7 +138,14 @@ def load_checkpoint(path):
     if (mean.shape != (len(FEATURES),) or scale.shape != mean.shape
             or not np.isfinite(mean).all() or not np.isfinite(scale).all() or (scale <= 0).any()):
         raise ValueError(f"{path}: scaler 无效")
-    model = FurnaceClassifier(checkpoint["variant"])
+    variant = checkpoint["variant"]
+    if variant == "C":
+        # C subclasses FurnaceClassifier, so import it after this module is loaded.
+        from furnace_c import FurnaceClassifierC
+
+        model = FurnaceClassifierC()
+    else:
+        model = FurnaceClassifier(variant)
     model.load_state_dict(checkpoint["model_state"])
     return model.eval(), mean, scale
 
