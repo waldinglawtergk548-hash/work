@@ -31,6 +31,16 @@ $bfPython = 'D:\anaconda\envs\vjepa2-312\python.exe'
 
 ## 结果目录
 
+### A/B/C 最佳折曲线
+
+按 200 行区间参考标签选出的权重为 A 第 2 折、B 第 1 折、C 第 1 折。C 第 4 折并列，图中展示第 1 折。左图为逐轮训练交叉熵，右图为各自验证集的宏 F1。圆点标记各折保存权重的轮次（A 第 7 轮、B 第 2 轮、C 第 3 轮）。
+
+![A/B/C 最佳折的训练损失与验证宏 F1](figures/best_fold_training_curves.svg)
+
+[下载 PDF 矢量版](figures/best_fold_training_curves.pdf)
+
+### 训练生成的文件
+
 - `report.md` 和 `metrics.json` 分别提供可读报告和机器可读指标，包含五折、折外汇总及可用的独立测试样例结果。
 - `splits.json` 保存 0 基原始行索引。`oof_A.csv`、`oof_B.csv` 按原始顺序保存 500 行折外预测，并附真实类别和折编号。
 - `test_A.csv`、`test_B.csv` 按原始顺序保存全部测试预测。有标签且对齐条件满足时附 `true_label`，后 50 行留空。
